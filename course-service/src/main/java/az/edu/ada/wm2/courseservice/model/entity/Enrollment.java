@@ -1,23 +1,12 @@
 package az.edu.ada.wm2.courseservice.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import jakarta.persistence.UniqueConstraint;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 @Entity
-@Table(
-        name = "enrollments",
-        uniqueConstraints = @UniqueConstraint(columnNames = {"course_id", "student_id"})
-)
+@Table(name = "enrollments")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -35,4 +24,7 @@ public class Enrollment {
     @Column(name = "student_id", nullable = false)
     private Long studentId;
 
+    @CreationTimestamp
+    @Column(name = "enrollment_date", nullable = false, updatable = false)
+    private LocalDateTime enrollmentDate;
 }

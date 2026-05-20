@@ -10,7 +10,7 @@ description = 'student-service'
 
 java {
     toolchain {
-        languageVersion = JavaLanguageVersion.of(21)
+        languageVersion = JavaLanguageVersion.of(17)
     }
 }
 
@@ -36,7 +36,6 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-// Some IDE integrations invoke this task even for Groovy DSL projects.
 if (tasks.findByName('prepareKotlinBuildScriptModel') == null) {
     tasks.register('prepareKotlinBuildScriptModel') {
         group = 'ide'
